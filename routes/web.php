@@ -3,5 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('pages.home');
-});
+    return Inertia::render('Home');
+})->name('home');
+
+Route::resource('store', StoreController::class);
