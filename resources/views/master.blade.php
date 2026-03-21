@@ -16,7 +16,7 @@
     </main>
 
     <footer>
-        <h1>Nails On Chic</h1>
+        <h1>Nails On Chic!</h1>
         <section>
             <p></p>
             <p></p>
