@@ -7,3 +7,5 @@ Route::get('/', function () {
 })->name('home');
 
 Route::resource('store', StoreController::class);
+
+Route::resource('contact', ContactController::class);
