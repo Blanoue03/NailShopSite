@@ -492,3 +492,115 @@ footer
     opacity: 75%;
     margin-top: 0.5rem;
 }
+
+.border-2 .border-black .p-8 .text-center{
+    border-width: 2px;
+    border-color: black;
+    padding: 2rem;
+    text-align: center;
+}
+
+.uppercase .tracking-wider .mb-4{
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.border-2 .border-black .px-8 .py-2 :hover.bg-black :hover.text-white .transition-colors .uppercase .tracking-wider{
+    border-width: 2px;
+    border-color: black;
+    padding: 0.5rem 2rem;
+    background-color: black;
+    color: white;
+    transition-property: background-color, border-color, color, fill, stroke;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.max-w-4xl .mx-auto .px-8 .py-12 .page-fade-in{
+    max-width: 56rem;
+    margin-right: auto; margin-left: auto;
+    padding: 3rem 2rem;
+}
+
+.mb-6{
+    margin-bottom: 1.5rem;
+}
+
+.border-2 .border-black .px-6 .py-2 :hover.bg-black :hover.text-white .transition-colors .uppercase .tracking-wider .text-sm{
+    border-width: 2px;
+    border-color: black;
+    padding: 0.5rem 1.5rem;
+    background-color: black;
+    color: white;
+    transition-property: background-color, border-color, color, fill, stroke;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: .875rem;
+}
+
+.aspect-square .border-2 .border-black .flex .items-center .justify-center .mb-8{
+    aspect-ratio: 1/1;
+    border-width: 2px;
+    border-color: black;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.mb-8{
+    margin-bottom: 2rem;
+}
+
+.uppercase .tracking-wider .mb-2 .text-2xl{
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.text-xl{
+    font-size: 1.25rem;
+}
+
+.border-t-2 .border-black .pt-4 .mt-4{
+    border-top-width: 2px;
+    border-color: black;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.uppercase .tracking-wider .text-sm .mb-2{
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: .875rem;
+    margin-bottom: 0.5rem;
+}
+
+.grid .grid-cols-1 .md\:grid-cols-2 .gap-4{
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    gap: 1rem;
+}
+
+.border-2 .border-black .px-8 .py-4 :hover.bg-black :hover.text-white .transition-colors .uppercase .tracking-wider{
+    border-width: 2px;
+    border-color: black;
+    padding: 1rem 2rem;
+    background-color: black;
+    color: white;
+    transition-property: background-color, border-color, color, fill, stroke;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mt-4 .text-sm .text-center .opacity-75{
+    margin-top: 1rem;
+    font-size: .875rem;
+    text-align: center;
+    opacity: 75%;
+}
