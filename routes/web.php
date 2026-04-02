@@ -17,3 +17,4 @@ Route::get('/store/{id}', [StoreController::class, 'show'])->name('store.show');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
