@@ -15,23 +15,19 @@ RUN apk add --no-cache \
     sqlite-dev \
     freetype-dev \
     libjpeg-turbo-dev \
+    mariadb-dev \
     supervisor
 
-# Install PHP extensions
+# Install PHP extensions (tokenizer, ctype, fileinfo are already bundled)
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install \
-        pdo \
         pdo_sqlite \
         pdo_mysql \
         mbstring \
         exif \
         pcntl \
         bcmath \
-        gd \
-        xml \
-        tokenizer \
-        ctype \
-        fileinfo
+        gd
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
