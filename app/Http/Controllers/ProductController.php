@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+
 //use Illuminate\Support\Facades\DB;
 
 
@@ -15,7 +17,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('products.index', compact('products'));
+        return Inertia::render('Store', [
+            'products' => $products,
+        ]);
     }
 
     /**
@@ -41,7 +45,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        return Inertia::render('ProductDetails', [
+            'product' => $product,
+        ]);
     }
 
     /**
@@ -69,5 +75,13 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('products.index');
+    }
+    public function getRandomSix()
+    {
+        $products = Product::all()->random(6);
+
+        return Inertia::render('Home', [
+            'products' => $products,
+        ]);
     }
 }

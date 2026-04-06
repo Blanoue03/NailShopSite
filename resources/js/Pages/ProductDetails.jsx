@@ -4,7 +4,7 @@ import Layout from '@/Layouts/Layout';
 
 export default function ProductDetails({ product }) {
 
-    if (!product) {
+    if (!product || product == undefined) {
         return (
             <main className="max-w-7xl mx-auto px-8 py-12 page-fade-in">
                 <div className="border-2 border-black p-8 text-center">
@@ -26,6 +26,7 @@ export default function ProductDetails({ product }) {
                 orderType: 'now',
                 productId: product.id,
                 productName: product.name,
+                productPrice: product.price,
             }
         });
     };
@@ -36,10 +37,12 @@ export default function ProductDetails({ product }) {
                 orderType: 'custom',
                 productId: product.id,
                 productName: product.name,
+                productPrice: product.price,
             }
         });
     };
 
+    console.log(product)
     return (
         <main className="max-w-4xl mx-auto px-8 py-12 page-fade-in">
 
@@ -57,9 +60,7 @@ export default function ProductDetails({ product }) {
 
                 {/* Product Image */}
                 <div className="aspect-square border-2 border-black flex items-center justify-center mb-8">
-                    <div className="text-center opacity-50">
-                        [PRODUCT IMAGE - LARGE]
-                    </div>
+                    <img src={`/images/${product.image}`} className="w-full h-full object-cover" />
                 </div>
 
                 {/* Product Information */}
@@ -71,7 +72,7 @@ export default function ProductDetails({ product }) {
                     </div>
                     <div className="border-t-2 border-black pt-4 mt-4">
                         <div className="uppercase tracking-wider text-sm mb-2">DESCRIPTION</div>
-                        <p className="leading-relaxed">{product.full_description}</p>
+                        <p className="leading-relaxed">{product.long_description}</p>
                     </div>
                 </div>
 
