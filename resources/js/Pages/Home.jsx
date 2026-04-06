@@ -58,14 +58,14 @@ export default function Home() {
 
                         {/* Slideshow */}
                         <div
-                            className="relative"
+                            className="slideshow"
                             onTouchStart={handleTouchStart}
                             onTouchEnd={handleTouchEnd}
                         >
                             {slides.map((label, index) => (
                                 <div
                                     key={index}
-                                    className={`${index === currentSlide ? 'flex' : 'hidden'} aspect-[16/9] border-2 border-black items-center justify-center`}
+                                    className={`slide${index === currentSlide ? ' active' : ''}`}
                                 >
                                     <div className="text-center">
                                         <div className="uppercase tracking-wider mb-2">{label}</div>
@@ -74,32 +74,17 @@ export default function Home() {
                                 </div>
                             ))}
 
-                            {/* Arrows */}
-                            <button
-                                onClick={() => showSlide(currentSlide - 1)}
-                                className="absolute left-4 top-1/2 -translate-y-1/2 border-2 border-black bg-white p-2 hover:bg-black hover:text-white transition-colors z-10"
-                            >
-                                ←
-                            </button>
-                            <button
-                                onClick={() => showSlide(currentSlide + 1)}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 border-2 border-black bg-white p-2 hover:bg-black hover:text-white transition-colors z-10"
-                            >
-                                →
-                            </button>
+                            <button className="slide-arrow prev" onClick={() => showSlide(currentSlide - 1)}>←</button>
+                            <button className="slide-arrow next" onClick={() => showSlide(currentSlide + 1)}>→</button>
                         </div>
 
                         {/* Dots */}
-                        <div className="flex justify-center gap-2 mt-4">
+                        <div className="slide-dots">
                             {slides.map((_, index) => (
                                 <span
                                     key={index}
                                     onClick={() => showSlide(index)}
-                                    className={`w-3 h-3 rounded-full cursor-pointer ${
-                                        index === currentSlide
-                                            ? 'bg-black'
-                                            : 'bg-white border-2 border-black'
-                                    }`}
+                                    className={`slide-dot${index === currentSlide ? ' active' : ''}`}
                                 />
                             ))}
                         </div>

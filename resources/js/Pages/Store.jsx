@@ -2,16 +2,16 @@
 import { Link } from '@inertiajs/react';
 import Layout from '@/Layouts/Layout';
 
-const products = [
+/*const products = [
     { id: 1, name: "PRODUCT 1", price: 25.00, description: "[Nail polish or product description]" },
     { id: 2, name: "PRODUCT 2", price: 30.00, description: "[Nail polish or product description]" },
     { id: 3, name: "PRODUCT 3", price: 35.00, description: "[Nail polish or product description]" },
     { id: 4, name: "PRODUCT 4", price: 40.00, description: "[Nail polish or product description]" },
     { id: 5, name: "PRODUCT 5", price: 28.00, description: "[Nail polish or product description]" },
     { id: 6, name: "PRODUCT 6", price: 32.00, description: "[Nail polish or product description]" },
-];
+];*/
 
-export default function Store() {
+export default function Store({ products }) {
     return (
         <main className="max-w-7xl mx-auto px-8 py-12 page-fade-in">
             <div className="mb-6 uppercase tracking-wider border-b-2 border-black pb-2">

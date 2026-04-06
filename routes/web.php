@@ -13,6 +13,8 @@ Route::get('/store', function () {
     return Inertia::render('Store');
 })->name('store');
 
+Route::get('/store', [StoreController::class, 'index'])->name('store');
+
 Route::get('/store/{id}', [StoreController::class, 'show'])->name('store.show');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
