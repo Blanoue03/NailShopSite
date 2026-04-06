@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Layout from '@/Layouts/Layout';
 
-export default function Home() {
+export default function Home({products}) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [touchStartX, setTouchStartX] = useState(0);
 
@@ -39,11 +39,15 @@ export default function Home() {
                     <div className="mb-4 uppercase tracking-wider">COMPANY DESCRIPTION</div>
                     <div className="space-y-4">
                         <p className="leading-relaxed">
-                            [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.]
+                            At Matt's Nails, creativity meets precision. Founded by Matthew Haug during the COVID-19 pandemic, what began as a small creative outlet quickly grew into a unique custom nail art business. Each design is carefully crafted to reflect individuality, style, and attention to detail, turning simple nails into personalized works of art.
                         </p>
                         <p className="leading-relaxed">
-                            [Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.]
+                            Whether you’re looking for bold statement pieces, subtle elegance, or something completely one-of-a-kind, Haug Custom Nails offers designs tailored to your vision. Every set is created with care, combining artistic creativity with a commitment to quality.
                         </p>
+                        <p className="leading-relaxed">
+                            What started as a passion project has evolved into a small business dedicated to helping clients express themselves through custom nail designs—because no two styles should ever be the same.
+                        </p>
+
                     </div>
                 </div>
             </section>
@@ -62,15 +66,12 @@ export default function Home() {
                             onTouchStart={handleTouchStart}
                             onTouchEnd={handleTouchEnd}
                         >
-                            {slides.map((label, index) => (
+                            {products.map((product, index) => (
                                 <div
                                     key={index}
                                     className={`slide${index === currentSlide ? ' active' : ''}`}
                                 >
-                                    <div className="text-center">
-                                        <div className="uppercase tracking-wider mb-2">{label}</div>
-                                        <div className="opacity-50">[Nail Example]</div>
-                                    </div>
+                                    <img src={`/images/${product.image}`} className="w-full h-full object-cover" />
                                 </div>
                             ))}
 

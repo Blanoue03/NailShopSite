@@ -14,7 +14,7 @@ export default function Layout({ children }) {
                     {/* Desktop */}
                     <div className="nav-desktop">
                         <Link href={route('home')} className="nav-logo">
-                            Company Logo
+                            Matt's Nails
                         </Link>
                         <nav className="nav-links">
                             <Link href={route('store')}   className="nav-link">Store</Link>

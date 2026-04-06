@@ -27,16 +27,14 @@ export default function Store({ products }) {
                         className="border-2 border-black p-6 flex flex-col hover:bg-black hover:text-white transition-colors"
                     >
                         {/* Product Image Placeholder */}
-                        <div className="aspect-square border-2 border-black flex items-center justify-center mb-4">
-                            <div className="text-center opacity-50">
-                                [PRODUCT IMAGE]
-                            </div>
+                        <div className="aspect-square border-2 border-black flex items-center justify-center mb-4 overflow-hidden">
+                            <img src={`/images/${product.image}`} className="w-full h-full object-cover" />
                         </div>
 
                         {/* Product Details */}
                         <div className="flex-1">
                             <div className="uppercase tracking-wider mb-2">{product.name}</div>
-                            <div className="text-sm mb-3 opacity-75">{product.description}</div>
+                            <div className="text-sm mb-3 opacity-75">{product.short_description}</div>
                             <div className="mb-4">
                                 <span className="uppercase tracking-wider">PRICE: </span>
                                 <span>${product.price.toFixed(2)}</span>
