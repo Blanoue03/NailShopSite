@@ -6,10 +6,11 @@ export default function Home({products}) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [touchStartX, setTouchStartX] = useState(0);
 
-    const totalSlides = 6;
-
     const showSlide = (n) => {
-        setCurrentSlide((n + totalSlides) % totalSlides);
+        const maxSlide = products.length - 2;
+        if (n < 0) setCurrentSlide(maxSlide);
+        else if (n > maxSlide) setCurrentSlide(0);
+        else setCurrentSlide(n);
     };
 
     const handleTouchStart = (e) => {
@@ -25,17 +26,14 @@ export default function Home({products}) {
         }
     };
 
-    const slides = [
-        'PHOTO 1', 'PHOTO 2', 'PHOTO 3',
-        'PHOTO 4', 'PHOTO 5', 'PHOTO 6',
-    ];
+    const dotCount = products.length - 1;
 
     return (
         <main className="max-w-7xl mx-auto px-8 py-12 page-fade-in">
 
             {/* Company Description Section */}
             <section className="mb-16">
-                <div className="border-2 border-black p-8">
+                <div className="page-box">
                     <div className="mb-4 uppercase tracking-wider">COMPANY DESCRIPTION</div>
                     <div className="space-y-4">
                         <p className="leading-relaxed">
@@ -54,10 +52,10 @@ export default function Home({products}) {
 
             {/* Photo Gallery Section */}
             <section>
-                <div className="mb-6 uppercase tracking-wider border-b-2 border-black pb-2">
+                <div className="page-heading mb-6">
                     PHOTO EXAMPLES GALLERY
                 </div>
-                <div className="border-2 border-black p-8">
+                <div className="page-box">
                     <div className="relative">
 
                         {/* Slideshow */}
@@ -66,14 +64,16 @@ export default function Home({products}) {
                             onTouchStart={handleTouchStart}
                             onTouchEnd={handleTouchEnd}
                         >
-                            {products.map((product, index) => (
-                                <div
-                                    key={index}
-                                    className={`slide${index === currentSlide ? ' active' : ''}`}
-                                >
-                                    <img src={`/images/${product.image}`} className="w-full h-full object-cover" />
-                                </div>
-                            ))}
+                            <div
+                                className="slideshow-track"
+                                style={{ transform: `translateX(-${currentSlide * 50}%)` }}
+                            >
+                                {products.map((product, index) => (
+                                    <div key={index} className="slide">
+                                        <img src={`/images/${product.image}`} className="w-full h-full object-cover" />
+                                    </div>
+                                ))}
+                            </div>
 
                             <button className="slide-arrow prev" onClick={() => showSlide(currentSlide - 1)}>←</button>
                             <button className="slide-arrow next" onClick={() => showSlide(currentSlide + 1)}>→</button>
@@ -81,7 +81,7 @@ export default function Home({products}) {
 
                         {/* Dots */}
                         <div className="slide-dots">
-                            {slides.map((_, index) => (
+                            {Array.from({ length: dotCount }).map((_, index) => (
                                 <span
                                     key={index}
                                     onClick={() => showSlide(index)}

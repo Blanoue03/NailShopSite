@@ -8,10 +8,6 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', [ProductController::class, 'getRandomSix'])->name('home');
 
-Route::get('/store', function () {
-    return Inertia::render('Store');
-})->name('store');
-
 Route::get('/store', [ProductController::class, 'index'])->name('store');
 
 Route::get('/store/{product}', [ProductController::class, 'show'])->name('store.show');

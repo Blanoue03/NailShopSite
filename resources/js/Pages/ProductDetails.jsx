@@ -7,11 +7,12 @@ export default function ProductDetails({ product }) {
     if (!product || product == undefined) {
         return (
             <main className="max-w-7xl mx-auto px-8 py-12 page-fade-in">
-                <div className="border-2 border-black p-8 text-center">
+                <div className="page-box text-center">
                     <div className="uppercase tracking-wider mb-4">PRODUCT NOT FOUND</div>
                     <Link
                         href={route('store')}
-                        className="border-2 border-black px-8 py-2 hover:bg-black hover:text-white transition-colors uppercase tracking-wider"
+                        className="inline-block rounded-lg px-8 py-2 hover:bg-pink-200 transition-colors uppercase tracking-wider"
+                        style={{ border: '1.5px solid var(--border)' }}
                     >
                         BACK TO STORE
                     </Link>
@@ -50,16 +51,17 @@ export default function ProductDetails({ product }) {
             <div className="mb-6">
                 <Link
                     href={route('store')}
-                    className="border-2 border-black px-6 py-2 hover:bg-black hover:text-white transition-colors uppercase tracking-wider text-sm"
+                    className="rounded-lg px-6 py-2 hover:bg-pink-200 transition-colors uppercase tracking-wider text-sm"
+                    style={{ border: '1.5px solid var(--border)' }}
                 >
                     ← BACK TO STORE
                 </Link>
             </div>
 
-            <div className="border-2 border-black p-8">
+            <div className="page-box">
 
                 {/* Product Image */}
-                <div className="aspect-square border-2 border-black flex items-center justify-center mb-8">
+                <div className="aspect-square rounded-lg flex items-center justify-center mb-8 overflow-hidden" style={{ border: '1.5px solid var(--border)' }}>
                     <img src={`/images/${product.image}`} className="w-full h-full object-cover" />
                 </div>
 
@@ -70,7 +72,7 @@ export default function ProductDetails({ product }) {
                         <span className="uppercase tracking-wider">PRICE: </span>
                         <span className="text-xl">${parseFloat(product.price).toFixed(2)}</span>
                     </div>
-                    <div className="border-t-2 border-black pt-4 mt-4">
+                    <div className="pt-4 mt-4" style={{ borderTop: '1.5px solid var(--border)' }}>
                         <div className="uppercase tracking-wider text-sm mb-2">DESCRIPTION</div>
                         <p className="leading-relaxed">{product.long_description}</p>
                     </div>
@@ -80,13 +82,15 @@ export default function ProductDetails({ product }) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <button
                         onClick={handleOrderNow}
-                        className="border-2 border-black px-8 py-4 hover:bg-black hover:text-white transition-colors uppercase tracking-wider"
+                        className="rounded-lg px-8 py-4 hover:bg-pink-200 transition-colors uppercase tracking-wider"
+                        style={{ border: '1.5px solid var(--border)' }}
                     >
                         ORDER NOW
                     </button>
                     <button
                         onClick={handleCustomOrder}
-                        className="border-2 border-black px-8 py-4 hover:bg-black hover:text-white transition-colors uppercase tracking-wider"
+                        className="rounded-lg px-8 py-4 hover:bg-pink-200 transition-colors uppercase tracking-wider"
+                        style={{ border: '1.5px solid var(--border)' }}
                     >
                         CREATE CUSTOM ORDER
                     </button>

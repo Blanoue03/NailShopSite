@@ -14,7 +14,7 @@ import Layout from '@/Layouts/Layout';
 export default function Store({ products }) {
     return (
         <main className="max-w-7xl mx-auto px-8 py-12 page-fade-in">
-            <div className="mb-6 uppercase tracking-wider border-b-2 border-black pb-2">
+            <div className="page-heading mb-6">
                 STORE
             </div>
 
@@ -24,10 +24,10 @@ export default function Store({ products }) {
                     <Link
                         key={product.id}
                         href={route('store.show', product.id)}
-                        className="border-2 border-black p-6 flex flex-col hover:bg-black hover:text-white transition-colors"
+                        className="page-box-compact flex flex-col hover:bg-pink-100 transition-colors"
                     >
                         {/* Product Image Placeholder */}
-                        <div className="aspect-square border-2 border-black flex items-center justify-center mb-4 overflow-hidden">
+                        <div className="aspect-square flex items-center justify-center mb-4 overflow-hidden rounded-lg" style={{ border: '1.5px solid var(--border)' }}>
                             <img src={`/images/${product.image}`} className="w-full h-full object-cover" />
                         </div>
 

@@ -78,7 +78,7 @@ class ProductController extends Controller
     }
     public function getRandomSix()
     {
-        $products = Product::all()->random(6);
+        $products = Product::inRandomOrder()->limit(6)->get();
 
         return Inertia::render('Home', [
             'products' => $products,
