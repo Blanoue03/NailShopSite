@@ -16,6 +16,8 @@ return [
 
     'default' => env('MAIL_MAILER', 'log'),
 
+    'owner_email' => env('MAIL_OWNER_EMAIL', 'w0870874@myscc.ca'),
+
     /*
     |--------------------------------------------------------------------------
     | Mailer Configurations

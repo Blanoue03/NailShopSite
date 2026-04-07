@@ -47,7 +47,11 @@ class ContactController extends Controller
             'token'          => Str::uuid(),
         ]);
 
-        Mail::to('w0870874@myscc.ca')->send(new NewOrderMail($order));
+        try {
+            Mail::to(config('mail.owner_email'))->send(new NewOrderMail($order));
+        } catch (\Exception $e) {
+            \Log::error('New order email failed: ' . $e->getMessage());
+        }
 
         return back()->with('success', 'Your request has been submitted! You will receive an email once it has been reviewed.');
     }
