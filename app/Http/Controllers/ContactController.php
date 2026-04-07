@@ -47,7 +47,7 @@ class ContactController extends Controller
             'token'          => Str::uuid(),
         ]);
 
-        Mail::to('elijahharnadek@gmail.com')->send(new NewOrderMail($order));
+        Mail::to('w0870874@myscc.ca')->send(new NewOrderMail($order));
 
         return back()->with('success', 'Your request has been submitted! You will receive an email once it has been reviewed.');
     }
