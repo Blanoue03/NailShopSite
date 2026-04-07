@@ -60,7 +60,7 @@
             <td style="padding-right:12px;">
               <a href="{{ url('/orders/' . $order->token . '/approve') }}"
                  style="display:inline-block;background:#c0617e;color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:bold;">
-                {{ $order->order_type === 'custom' ? 'Set Price &amp; Approve' : 'Approve Order' }}
+                {{ $order->order_type === 'custom' ? 'Set Price & Approve' : 'Approve Order' }}
               </a>
             </td>
             <td>
