@@ -3,18 +3,20 @@ import { useForm, usePage } from '@inertiajs/react';
 import Layout from '@/Layouts/Layout';
 
 export default function Contact() {
-    const { orderType, productId, productName, productPrice } = usePage().props;
+    const { orderType, productId, productName, productPrice, flash } = usePage().props;
 
     const hasOrder = !!productId;
 
-    const { data, setData, post, processing } = useForm({
+    const { data, setData, post, processing, errors } = useForm({
         name: '',
         email: '',
         message: orderType === 'custom'
             ? '[Please describe your custom order requirements here...]'
             : '',
-        order_type: orderType || null,
-        product_id: productId || null,
+        order_type:    orderType    || null,
+        product_id:    productId    || null,
+        product_name:  productName  || null,
+        product_price: productPrice || null,
     });
 
     const handleSubmit = (e) => {
@@ -34,6 +36,13 @@ export default function Contact() {
             <div className="page-heading mb-6">
                 CONTACT
             </div>
+
+            {/* Success message */}
+            {flash?.success && (
+                <div style={{ background: 'var(--pink-light)', border: '1.5px solid var(--border)', borderRadius: '8px', padding: '16px', marginBottom: '24px', color: 'var(--text-dark)' }}>
+                    {flash.success}
+                </div>
+            )}
 
             {/* Order Summary - shown if arriving from a product page */}
             {hasOrder && (
@@ -64,9 +73,6 @@ export default function Contact() {
                 <div className="mb-6 uppercase tracking-wider text-sm">
                     SEND US A MESSAGE
                 </div>
-                <div className="mb-4 text-sm opacity-75">
-                    [Email will be sent to: placeholder@nailsalon.com]
-                </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
 
@@ -85,6 +91,7 @@ export default function Contact() {
                             className="form-input"
                             placeholder="[Your Name]"
                         />
+                        {errors.name && <p className="text-sm mt-1" style={{ color: 'var(--pink-deep)' }}>{errors.name}</p>}
                     </div>
 
                     {/* Email */}
@@ -102,23 +109,29 @@ export default function Contact() {
                             className="form-input"
                             placeholder="[your.email@example.com]"
                         />
+                        {errors.email && <p className="text-sm mt-1" style={{ color: 'var(--pink-deep)' }}>{errors.email}</p>}
                     </div>
 
                     {/* Message */}
                     <div>
                         <label htmlFor="message" className="block uppercase tracking-wider text-sm mb-2">
-                            MESSAGE
+                            MESSAGE{' '}
+                            {orderType === 'custom'
+                                ? <span style={{ color: 'var(--pink-deep)' }}>(REQUIRED)</span>
+                                : <span style={{ color: 'var(--text-mid)' }}>(OPTIONAL)</span>
+                            }
                         </label>
                         <textarea
                             id="message"
                             name="message"
                             value={data.message}
                             onChange={e => setData('message', e.target.value)}
-                            required
+                            required={orderType === 'custom'}
                             rows={6}
                             className="form-textarea"
                             placeholder="[Your message here...]"
                         />
+                        {errors.message && <p className="text-sm mt-1" style={{ color: 'var(--pink-deep)' }}>{errors.message}</p>}
                     </div>
 
                     {/* Submit */}
@@ -128,7 +141,7 @@ export default function Contact() {
                         className="w-full px-6 py-3 rounded-lg uppercase tracking-wider transition-colors disabled:opacity-50 hover:bg-pink-200"
                         style={{ border: '1.5px solid var(--border)' }}
                     >
-                        {hasOrder ? 'CONFIRM ORDER' : 'SEND MESSAGE'}
+                        {processing ? 'SENDING...' : hasOrder ? 'CONFIRM ORDER' : 'SEND MESSAGE'}
                     </button>
 
                 </form>
