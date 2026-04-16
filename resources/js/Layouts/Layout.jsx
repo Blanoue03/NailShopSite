@@ -34,12 +34,10 @@ export default function Layout({ children }) {
                         >
                             {menuOpen ? '✕' : '☰'}
                         </button>
-                        {menuOpen && (
-                            <div className="mobile-dropdown">
-                                <Link href={route('store')}   onClick={() => setMenuOpen(false)}>Store</Link>
-                                <Link href={route('contact')} onClick={() => setMenuOpen(false)}>Contact</Link>
-                            </div>
-                        )}
+                        <div className={`mobile-dropdown ${menuOpen ? 'open' : ''}`}>
+                            <Link href={route('store')}   onClick={() => setMenuOpen(false)}>Store</Link>
+                            <Link href={route('contact')} onClick={() => setMenuOpen(false)}>Contact</Link>
+                        </div>
                     </div>
 
                 </div>
