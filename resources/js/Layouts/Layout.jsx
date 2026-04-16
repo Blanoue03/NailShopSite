@@ -25,7 +25,7 @@ export default function Layout({ children }) {
                     {/* Mobile */}
                     <div className="nav-mobile">
                         <Link href={route('home')} className="nav-logo">
-                            Company Logo
+                            Matt's Nails
                         </Link>
                         <button
                             className="hamburger"
